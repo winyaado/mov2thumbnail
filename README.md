@@ -4,11 +4,10 @@
 
 # つかいかた
 
+./fonts/ へ2バイト文字対応のフォントをfont.ttfの名前で配置してください<br>
 
-./fonts/ へ2バイト文字対応のフォントをfont.ttfの名前で配置してください
+下記引数を渡してmov2thumbnail.pyを実行してください<br>
+-m 動画ファイルが配置されているディレクトリ<br>
+-o サムネイルを出力するディレクトリ<br>
 
-下記引数を渡してmov2thumbnail.pyを実行してください
--m 動画ファイルが配置されているディレクトリ
--o サムネイルを出力するディレクトリ
-
-python mov2thumbnail.py -m ./mov/ -o ./thum/
+python mov2thumbnail.py -m ./mov/ -o ./thum/ <br>
