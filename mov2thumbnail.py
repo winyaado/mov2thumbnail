@@ -65,7 +65,11 @@ args = parser.parse_args( )
 
 sys.setrecursionlimit(100000)
 
-jp_font = "./fonts/font.ttf" 
+jp_font = "./fonts/font.ttf"
+#フォントファイルの存在チェックを追加
+if not os.path.isfile(f"./fonts/font.ttf"):
+    print("font file not found")
+    sys.exit()
 img_ram = {}
 img_ram1 = {}
 size = 1280,1920, 3
