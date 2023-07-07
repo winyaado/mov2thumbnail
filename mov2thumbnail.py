@@ -47,9 +47,13 @@ def get_img(cap_file,getframe,fps,cb):
   cap_file.set(cv2.CAP_PROP_POS_FRAMES, int(getframe))
   ret, frame = cap_file.read()
   if ret:
-    frame = cv2.resize(frame,(1920,1080))
-    cv2.putText(frame,frame2time(getframe,fps), (20,120), cv2.FONT_HERSHEY_SIMPLEX, 5, (255,255,255), 8, cv2.LINE_AA)
-    img = frame
+    img = np.zeros((1080,1920,3),np.uint8)
+    h,w=frame.shape[:2]
+    size_as = min([1920/w,1080/h])
+    frame = cv2.resize(frame,(int(w*size_as),int(h*size_as)))
+    h,w=frame.shape[:2]
+    img[0:h,int(1920/2-w/2):int(1920/2+w/2)] = frame
+    cv2.putText(img,frame2time(getframe,fps), (20,120), cv2.FONT_HERSHEY_SIMPLEX, 5, (255,255,255), 8, cv2.LINE_AA)
   else:
     if cb <= 0:
       img = cv2.resize(np.zeros(size, dtype=np.uint8),(1920,1080))
